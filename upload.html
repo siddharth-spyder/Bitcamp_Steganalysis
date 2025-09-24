@@ -1,0 +1,130 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Upload Image - Steganography Detector</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/logo/favicon.png"/>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <style>
+        body {
+            background-image: url('/assets/images/welcome-hero/steg4.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            flex-direction: column;
+        }
+
+        .upload-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .upload-box {
+            border: 2px dashed #4e4ffa;
+            padding: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .upload-box:hover {
+            border-color: #0102fa;
+        }
+
+        .upload-box i {
+            font-size: 48px;
+            color: #4e4ffa;
+        }
+
+        input[type='file'] {
+            display: none;
+        }
+
+        #result {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="upload-container" data-aos="zoom-in">
+        <form id="uploadForm" enctype="multipart/form-data">
+            <label class="upload-box" for="file-upload">
+                <i class="fa fa-plus"></i>
+                <p style="margin-top: 10px;">Click to upload image</p>
+            </label>
+            <input id="file-upload" type="file" name="file" accept="image/*" required>
+        </form>
+    </div>
+
+    <div id="result"></div>
+
+    <!-- scripts -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        document.getElementById('file-upload').addEventListener('change', function () {
+            const formData = new FormData(document.getElementById('uploadForm'));
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('result');
+                if (data.error) {
+                    resultDiv.innerHTML = `<p style="color: red;">Error: ${data.error}</p>`;
+                } else {
+                    resultDiv.innerHTML = `
+                        <h3>Result:</h3>
+                        <p><strong>Status:</strong> ${data.status}</p>
+                        <p><strong>Image:</strong> ${data.image}</p>
+                    `;
+                }
+                resultDiv.style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = `<p style="color: red;">An error occurred.</p>`;
+                document.getElementById('result').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+
+</html>

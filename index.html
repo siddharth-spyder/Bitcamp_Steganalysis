@@ -1,0 +1,117 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <!-- meta data -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- title -->
+    <title>Steganography Detector</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/logo/favicon.png"/>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <style>
+        /* Fade-in animation for hero text */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- welcome section -->
+    <section id="home" class="welcome-hero">
+        <div class="container text-center">
+            <div class="welcome-hero-txt">
+                <h1 class="big-title fade-in">Steganography Image Detector 🔍</h1>
+                <span class="subtitle fade-in" style="animation-delay: 0.3s; animation-fill-mode: both;">Uncover hidden messages in images effortlessly</span>
+                <button class="welcome-btn fade-in" style="animation-delay: 0.6s; animation-fill-mode: both;" onclick="window.location.href='/upload'">Go to Detector</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- about section -->
+    <section id="about" class="service" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>About Steganography</h2>
+                <p>Learn about the science of hiding information in plain sight.</p>
+            </div>
+            <div class="service-content">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>
+                            Steganography is the practice of concealing messages or information within other non-secret text or data. 
+                            In the context of this website, we focus on hiding text messages within images in such a way that they are invisible to the human eye. 
+                            Our tool allows you to upload an image and check if it contains any hidden textual information using advanced machine learning techniques.
+                        </p>
+                        <p>
+                            Whether you're a cybersecurity enthusiast, a researcher, or just curious, this platform provides an easy-to-use interface to detect steganographic content.
+                        </p>
+                        <button class="welcome-btn" onclick="window.location.href='/upload'" style="margin-top: 30px;">Try the Detector</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- why stegano section -->
+    <section id="why-stegano" class="service" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container text-center">
+            <div class="section-header">
+                <h2>Why Stegano?</h2>
+                <p>Understand the importance of detecting hidden data in images.</p>
+            </div>
+            <div class="service-content">
+                <img src="assets/images/welcome-hero/steg1.jpg" alt="Why Stegano" class="img-fluid" style="border-radius: 8px; margin-bottom: 30px;">
+                <p>
+                    In today's digital world, hidden data can be used for both creative and malicious purposes. From securely transmitting sensitive information to covertly embedding messages, steganography offers powerful capabilities.
+                </p>
+                <p>
+                    Detecting steganography helps ensure transparency and security in communication channels. Our tool empowers you to uncover hidden messages that could otherwise go unnoticed.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer id="contact" class="contact">
+        <div class="container text-center">
+            <p>&copy; 2025 Steganography Detector. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="#"><i class="fa fa-github"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- scripts -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
